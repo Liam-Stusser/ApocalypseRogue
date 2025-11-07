@@ -31,3 +31,29 @@ Difficulty
 -As you progress to each new area the game keeps count and scales from easy(1-10) -> medium(11-20) -> hard(20+)
 -The maps get larger as the difficulty rises and more enemies/enemy tpyes spawn, but better food can also spawn
 
+Making the game:
+
+  This game follows a tutorial on Unity Learn which starts off pretty simple and is not too challenging (if you have already made some projects on Unity), and walks you through making all the basic components of the game
+then leaves polishing up to you. It's very important to note though that the tutorial is based on grid movement and essentially moving your piece one square at a time like moving a chess piece then the enemy goes, and 
+the whole game is built/structred around this idea. Where I went wrong is I decided I wanted movement to be fluid and based on holding the key down then using floats and Time.DeltaTime to smooth out the movement.
+This implementation breaks sooo many core features the tutorial is based on and made this project ALOT harder than it needed to be for me, once I got to around the walls and enemies part of the tutorial I eventually
+just stopped following it and went free form, which brings us here.
+
+I first knew I was going to have problems when in the movement part of the tutorial after I had implemented my "smoother" movement it said we are now going to create a turn system, which increments when the player presses
+and releases the move key, then shifts the player to that cell. This then calls a hasMoved boolean in the tutorial so the player does not keep moving on one key press, which is the exact opposite of my "smooth"
+movement based system. My whole movement is based on holding the key down and running around happy as can be, so I had to get creative and add a way to detect when the player changes cells to increment my turn system,
+which brought me to my first deviation from the tutorial. You can see in my PlayerMovement script we keep track of the players current cell then check to see if currentCell does not equal our newCell, if it changed we
+increment turn counter with a Tick() (more on the Tick() system later) then update currentCell, simple enough.
+
+Adding food, UI elements, Cell objects, all went pretty alright nothing too bad there but then we get into walls which is based, as you might have gussed... on movement. Since the players movement was always updating in my
+version, rather than just move player to the center of this cell. I had an issue with the player touching a wall once and that wall taking 1 damage, at 60 frames a second haha. Now I had to implement a whole new way to make
+sure the walls can only take 1 damage each turn while the player can still move "smoothly". My new idea was to make a stun feature which stuns the player and knocks them back a little bit, which then introduced more bugs,
+which is the theme of this whole project. To first detect a wall I needed to essentially check what cell the player wanted to move in and see if it was a wall, if you look in playerController you will notice a targetCell
+variable in the movePlayer function. Then if it is a wall we call the stun method of player in the wallObject script and "bounce" the player back. Worked great at first, until the walls started knocking the player 
+out of bounds (OOB) essentially breaking the game. Now I had to go and fix this bug which was a nightmare and had its own set of issues/bugs but I finally got it all working perfectly and felt like nothing could stop me.
+
+Well I had no idea what I was in for as I moved onto the enemy part I slowly started to realize that I screwed myself. About 1 hour into the tutorial for enemies I threw the tutorial out the window and spen the next I think
+week or little over a week just making/mostly debugging the enemy script. Rather than use Unitys built in AI tools for pathing, and obsticles I was excited to use my Data Structures and Algorithims knowledge I learned
+and finally put it to the test. I was actually excited to finally use Dijkstra's algorithim since I was essentially working with an adjacency matrix graph, so I busted out my notebook read through my notes and slowly
+realized Dijkstra is for WEIGHTED graphs. 
+
