@@ -1,1 +1,33 @@
-This is a readme file
+Apocalypse Rogue 2D 
+
+This repository contains all the scripts used in my 2D game Apocalypse Rogue which you can play on Unity Play: https://play.unity.com/en/games/55e599ed-1472-4426-907d-ff265e23646f/apocalypserogue
+
+Gameplay:
+
+Basics
+-The game uses a simple WASD pattern for movement and spacebar to attack walls or enemies
+-You have a total food count at the bottom which works as your health, if it hits 0...you loose
+-The objective is to reach the Exit sign at the far end of the map
+-Walls block your way, and undead creatures hunt you down
+
+Food
+-Food spawns randomly on the board based on the current difficulty, more on that later
+-There are 4 types of food two small items (Soda, and apples) which restore 10 points each, 1 medium item (dead fish) which restores 20 points, and 1 large (cooked chicken) worth 30 points
+-Getting hit by enemies, moving, or bumping into walls all reduce food, so plan your moves carefully
+
+Walls
+-Spawn randomly covering certain percentages of the board based on difficulty
+-If you bump into a wall it reduces the walls health but slightly stuns you and moves the turn counter
+-You can also attack walls with your weapon to avoid bumping into them
+
+Enemies
+-There are 3 types of enemies, weak zombies, tough zombies, and mummies
+-They proactively hunt you down on the map and might even break walls to get to you 
+-Or sometimes they dont feel like doing anything and just stand there or get tired of chasing you
+-Weak zombies only deal 1 damage and have 4 health, tough zombies deal 2 damage and have 6 health, while mummies deal 10 damage but only have 3 health
+
+Difficulty
+-Level 1 is always a set level other than food and the one enemy spawn in random spots
+-As you progress to each new area the game keeps count and scales from easy(1-10) -> medium(11-20) -> hard(20+)
+-The maps get larger as the difficulty rises and more enemies/enemy tpyes spawn, but better food can also spawn
+
