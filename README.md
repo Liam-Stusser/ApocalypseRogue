@@ -64,7 +64,7 @@ This repository contains all the scripts used in my 2D game **Apocalypse Rogue**
 ## Making the game:
 
   This game follows a tutorial on Unity Learn which starts off pretty simple and is not too challenging (if you have already made some projects on Unity), and walks you through making all the basic components of the game
-then leaves polishing up to you. It's very important to note though that the tutorial is based on grid movement and essentially moving your piece one square at a time like moving a chess piece then the enemy goes, and 
+then leaves polishing up to you. It's very important to note though that the tutorial is based on grid movement and essentially moving your character one square at a time like moving a chess piece then the enemy goes, and 
 the whole game is built/structred around this idea. Where I went wrong is I decided I wanted movement to be fluid and based on holding the key down then using floats and Time.DeltaTime to smooth out the movement.
 This implementation breaks sooo many core features the tutorial is based on and made this project ALOT harder than it needed to be for me, once I got to around the walls and enemies part of the tutorial I eventually
 just stopped following it and went free form, which brings us here.
@@ -94,12 +94,12 @@ out of bounds (OOB) essentially breaking the game. Now I had to go and fix this 
 
 # Enemies
 
-Well I had no idea what I was in for as I moved onto the enemy part I slowly started to realize that I screwed myself. About 1 hour into the tutorial for enemies I threw the tutorial out the window and spen the next I think
+Well I had no idea what I was in for as I moved onto the enemy part I slowly started to realize that I screwed myself. About 1 hour into the tutorial for enemies I threw the tutorial out the window and spent the next I think
 week or little over a week just making/mostly debugging the enemy script. Rather than use Unitys built in AI tools for pathing, and obsticles I was excited to use my Data Structures and Algorithims knowledge I learned
-and finally put it to the test. I was actually excited to finally use Dijkstra's algorithim since I was essentially working with an adjacency matrix graph, so I busted out my notebook read through my notes and slowly
-realized Dijkstra is for WEIGHTED graphs. Which meant I just had to use a classic greedy BFS search to hunt the player down and did end up actually being my favorite part of this whole project as I got to use quite a few
+and finally put it to the test. I was actually excited to use Dijkstra's algorithim since I was essentially working with an adjacency matrix graph, so I busted out my notebook read through my notes and slowly
+realized Dijkstra is for WEIGHTED graphs. Which meant I just had to use a classic greedy BFS search to hunt the player down, and did end up actually being my favorite part of this whole project as I got to use quite a few
 data structures to make this pathing algorithim. A BFS search involves using a Queue (in graphs at least), then a hashset to store visited nodes, and finally a hashmap to store the route you are building to the player, and
-then building the path by reversing the order of your hashmap in a new array.
+then building the path by reversing the order of your hashmap in a new array. (If you need a touch up on some of these data structures you can goto my FCC repository and open the D&A directory and read about them there)
 
 ---
 
@@ -109,7 +109,7 @@ With my pathing algorithim finished I just now had to account for the enemy pote
 the enemies turn we check to see if he can move, if not we find the nearest wall and attack it, otherwise theres an error and we just tell the enemy to stand there. Which brings me to the turn system, once I got to adding 
 multiple enemies I realized (after alot of debugging and trying different things) that the tutorials Tick() system was just not going to work. So my last about 3 days involved overhauling the turn system to have the enemies
 store an internal count so each individual enemy on the board can move, attack, or be confused by a wall, while still having the player be able to walk around and do his stuff. This essentially meant I had to refactor the
-TurnManager, GameManager, PlayerController, and EnemyOnject just loads of fun.
+TurnManager, GameManager, PlayerController, and EnemyObject just loads of fun.
 
 ---
 
