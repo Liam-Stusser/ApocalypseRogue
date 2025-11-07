@@ -55,5 +55,15 @@ out of bounds (OOB) essentially breaking the game. Now I had to go and fix this 
 Well I had no idea what I was in for as I moved onto the enemy part I slowly started to realize that I screwed myself. About 1 hour into the tutorial for enemies I threw the tutorial out the window and spen the next I think
 week or little over a week just making/mostly debugging the enemy script. Rather than use Unitys built in AI tools for pathing, and obsticles I was excited to use my Data Structures and Algorithims knowledge I learned
 and finally put it to the test. I was actually excited to finally use Dijkstra's algorithim since I was essentially working with an adjacency matrix graph, so I busted out my notebook read through my notes and slowly
-realized Dijkstra is for WEIGHTED graphs. 
+realized Dijkstra is for WEIGHTED graphs. Which meant I just had to use a classic greedy BFS search to hunt the player down and did end up actually being my favorite part of this whole project as I got to use quite a few
+data structures to make this pathing algorithim. A BFS search involves using a Queue (in graphs at least), then a hashset to store visited nodes, and finally a hashmap to store the route you are building to the player, and
+then building the path by reversing the order of your hashmap in a new array.
+
+With my pathing algorithim finished I just now had to account for the enemy potentially getting stuck or boxed in by walls, so I added another findPlayer method which builds a path including tiles that are walls, then in
+the enemies turn we check to see if he can move, if not we find the nearest wall and attack it, otherwise theres an error and we just tell the enemy to stand there. Which brings me to the turn system, once I got to adding 
+multiple enemies I realized (after alot of debugging and trying different things) that the tutorials Tick() system was just not going to work. So my last about 3 days involved overhauling the turn system to have the enemies
+store an internal count so each individual enemy on the board can move, attack, or be confused by a wall, while still having the player be able to walk around and do his stuff. This essentially meant I had to refactor the
+TurnManager, GameManager, PlayerController, and EnemyOnject just loads of fun.
+
+In the end I got it all done, maybe a few little bugs here and there with some audio components but I happy with where it is so enjoy the game.
 
