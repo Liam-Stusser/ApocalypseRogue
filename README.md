@@ -113,4 +113,4 @@ TurnManager, GameManager, PlayerController, and EnemyOnject just loads of fun.
 
 ---
 
-In the end I got it all done, maybe a few little bugs here and there with some audio components but I happy with where it is so enjoy the game.
+In the end I got it all done, maybe a few little bugs here and there with some audio components but I'm happy with where it is so enjoy the game.
