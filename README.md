@@ -103,7 +103,7 @@ then building the path by reversing the order of your hashmap in a new array.
 
 ---
 
-#Turn System
+# Turn System
 
 With my pathing algorithim finished I just now had to account for the enemy potentially getting stuck or boxed in by walls, so I added another findPlayer method which builds a path including tiles that are walls, then in
 the enemies turn we check to see if he can move, if not we find the nearest wall and attack it, otherwise theres an error and we just tell the enemy to stand there. Which brings me to the turn system, once I got to adding 
